@@ -385,4 +385,16 @@ $(function() {
             e.preventDefault();
         }
     });
+
+    $("#sortable").sortable({
+        cursor: "move",
+        opacity: 0.5,
+        scroll: false,
+        stop: function() {
+            const data = $(this).sortable('toArray');
+            $('#order').val(data);
+            console.log(data);
+        }
+    });
+    $("#sortable").disableSelection();
 });

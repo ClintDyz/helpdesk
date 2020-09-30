@@ -110,6 +110,7 @@
 
     <!-- JavaScripts -->
     <script type="text/javascript" src="{{ Asset('plugins/jquery/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ Asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
     <script type="text/javascript" src="{{ Asset('plugins/mdb/js/popper.min.js') }}"></script>
     <script type="text/javascript" src="{{ Asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ Asset('plugins/mdb/js/mdb.min.js') }}"></script>

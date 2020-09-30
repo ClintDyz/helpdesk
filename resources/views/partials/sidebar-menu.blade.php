@@ -9,7 +9,7 @@
 
             <li>
                     @if ($sub1['has_sub_menu'])
-                <a href="#{{ $sub1['slug'] }}" 
+                <a href="#{{ $sub1['slug'] }}"
                    data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     {{ $sub1['name'] }}
                 </a>
@@ -18,10 +18,10 @@
 
                         @if (count($sub1['sub_menu']) > 0)
                             @foreach ($sub1['sub_menu'] as $sub2)
-                                
+
                     <li>
                                 @if ($sub2['has_sub_menu'])
-                        <a href="#{{ $sub2['slug'] }}" 
+                        <a href="#{{ $sub2['slug'] }}"
                            data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             {{ $sub2['name'] }}
                         </a>
@@ -39,7 +39,7 @@
                                     {{ $sub3['name'] }}
                                 </a>
                                                 @else
-                                <a href="{{ $sub3['file_link'] }}">
+                                <a href="{{ $sub3['file_link'] }}" target="{{ $sub3['file_link'] != '#' ? '_blank' : '_self' }}">
                                     {{ $sub3['name'] }}
                                 </a>
                                                 @endif
@@ -56,13 +56,13 @@
                             {{ $sub2['name'] }}
                         </a>
                                     @else
-                        <a href="{{ $sub2['file_link'] }}">
+                        <a href="{{ $sub2['file_link'] }}" target="{{ $sub2['file_link'] != '#' ? '_blank' : '_self' }}">
                             {{ $sub2['name'] }}
                         </a>
                                     @endif
                                 @endif
                     </li>
-                    
+
                             @endforeach
                         @endif
 
@@ -74,14 +74,14 @@
                     {{ $sub1['name'] }}
                 </a>
                         @else
-                <a href="{{ $sub1['file_link'] }}">
+                <a href="{{ $sub1['file_link'] }}" target="{{ $sub1['file_link'] != '#' ? '_blank' : '_self' }}">
                     {{ $sub1['name'] }}
                 </a>
                         @endif
                     @endif
             </li>
             <li>&nbsp;</li>
-            
+
                 @endforeach
             @endif
 

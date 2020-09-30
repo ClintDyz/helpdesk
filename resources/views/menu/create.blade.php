@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container mt-5 py-4 pt-5">
-    <div class="card uper">
+    <div class="card uper mb-5">
         <div class="card-header">
             Create Menu
         </div>
@@ -131,18 +131,22 @@
                             + Add Level 2 Menu
                         </button>
                     </div>
-                    <!--
-                    <button type="button" class="btn btn-outline-mdb-color btn-sm btn-block mt-2"
-                            onclick="$(this).addParentMenu();">
-                        + Add Level 1 Menu
-                    </button>
-                    -->
                 </div>
                 <hr>
                 <input type="hidden" id="input-sub-menus" name="sub_menus">
-                <button id="btn-finalize" type="submit" class="btn btn-primary btn-lg btn-block mt-3">
-                    Finilize and Save
-                </button>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <button id="btn-finalize" type="submit" class="btn btn-primary btn-lg btn-block mt-3">
+                            Finilize and Save
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{{ Route('menu.index') }}" class="btn btn-light btn-lg btn-block mt-3">
+                            Cancel
+                        </a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -151,5 +155,7 @@
 @endsection
 
 @section('custom-js')
-    <script src="{{ Asset('js/helpdesk-menu.js') }}"></script>
+
+<script src="{{ Asset('js/helpdesk-menu.js') }}"></script>
+
 @endsection

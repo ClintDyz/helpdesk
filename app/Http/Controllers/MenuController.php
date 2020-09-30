@@ -81,25 +81,15 @@ class MenuController extends Controller
                 $instanceMenu->save();
 
                 $msg = Auth::user()->firstname . " successfully created the $menuName menu.";
-                return redirect()->route('menu.index')->with('success', $msg);
+                //return redirect()->route('menu.index')->with('success', $msg);
             } catch (\Throwable $th) {
                 $msg = "Unknown error, try again.";
-                return redirect()->route('menu.index')->with('failed', $msg);
+                //return redirect()->route('menu.index')->with('failed', $msg);
             }
         } else {
             $msg = "No data, try again.";
-            return redirect()->route('menu.index')->with('failed', $msg);
+            //return redirect()->route('menu.index')->with('failed', $msg);
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id) {
-        //
     }
 
     /**
@@ -109,7 +99,19 @@ class MenuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        //
+        $menu = Menu::find($id);
+        $submenus = unserialize($menu->sub_menus);
+        //dd($submenus);
+        return view('menu.update', compact(
+            'id', 'menu', 'submenus'
+        ));
+    }
+
+    public function editOrder() {
+        $menuList = Menu::orderBy('order')->get();
+        return view('menu.update-order', compact(
+            'menuList',
+        ));
     }
 
     /**
@@ -119,9 +121,65 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        $data = json_decode($request->sub_menus);
+        $files = $request->file('files');
+
+        dd($request);
+        /*
+        if ($data) {
+            $menuName = $data->name;
+            $slug = $this->generateSlug($menuName);
+            $menuDescription = $data->description;
+            $menuPhoto = $data->photo;
+
+            try {
+                $this->deleteAllFiles($id);
+                $subMenu = $this->getSerializedSubmenu($data, $files, $id);
+
+                $instanceMenu = Menu::find($id);
+                $instanceMenu->slug = $slug;
+                $instanceMenu->name = $menuName;
+                $instanceMenu->description = $menuDescription;
+                $instanceMenu->sub_menus = $subMenu;
+
+                if ($menuPhoto) {
+                    $file = $this->getFileObjByFilename($menuPhoto, $files);
+                    $menuPhoto = $this->uploadFile($file, $id);
+                    $instanceMenu->photo = $menuPhoto;
+                }
+
+                $instanceMenu->save();
+
+                $msg = Auth::user()->firstname . " successfully updated the $menuName menu.";
+                //return redirect()->route('menu.index')->with('success', $msg);
+            } catch (\Throwable $th) {
+                $msg = "Unknown error, try again.";
+                //return redirect()->route('menu.index')->with('failed', $msg);
+            }
+        } else {
+            $msg = "No data, try again.";
+            //return redirect()->route('menu.index')->with('failed', $msg);
+        }
+        */
+    }
+
+    public function updateOrder(Request $request) {
+        $orders = explode(',', $request->order);
+
+        try {
+            foreach ($orders as $order => $slug) {
+                $menu = Menu::where('slug', $slug)->first();
+                $menu->order = $order + 1;
+                $menu->save();
+            }
+
+            $msg = Auth::user()->firstname . " successfully updated order of menu.";
+            return redirect()->route('menu.index')->with('success', $msg);
+        } catch (\Throwable $th) {
+            $msg = "Unknown error, try again.";
+            return redirect()->route('menu.index')->with('failed', $msg);
+        }
     }
 
     /**
@@ -222,7 +280,7 @@ class MenuController extends Controller
         $splitText = preg_split("/[^a-zA-Z0-9]+/", $text);
         $splitText = array_filter($splitText);
         $slug = implode("-",$splitText);
-        
+
         return strtolower($slug);
     }
 
@@ -239,13 +297,13 @@ class MenuController extends Controller
 
     private function uploadFile($file, $id) {
         $path = NULL;
-        
+
         if ($file) {
             $newFileName = $file->getClientOriginalName();
             Storage::put("public/files/menu/$id/$newFileName",
                          file_get_contents($file->getRealPath()));
             $path = "storage/files/menu/$id/$newFileName";
-            
+
             /*
             if ($type == 'image') {
                 Image::configure(['driver' => 'gd']);
