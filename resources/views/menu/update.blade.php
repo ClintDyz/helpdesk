@@ -114,7 +114,7 @@
                                         {{-- 3rd Level --}}
                                         @if (count($sub1['sub_menu']) > 0)
                                             @foreach ($sub1['sub_menu'] as $subCtr2 => $sub2)
-                                    <div class="child-menu p-3 border" id="child-menu-1-{{ $subCtr1 + 1 }}-1">
+                                    <div class="child-menu p-3 border" id="child-menu-1-{{ $subCtr1 + 1 }}-{{ $subCtr2 + 1 }}">
                                         <blockquote class="blockquote mb-0">
                                             <h5>
                                                 <div class="row">
@@ -162,7 +162,7 @@
                                                 @if (count($sub2['sub_menu']) > 0)
                                                     @foreach ($sub2['sub_menu'] as $subCtr3 => $sub3)
                                             <div class="child-menu p-3 border"
-                                                 id="child-menu-1-{{ $subCtr1 + 1 }}-{{ $subCtr2 + 1 }}-1">
+                                                 id="child-menu-1-{{ $subCtr1 + 1 }}-{{ $subCtr2 + 1 }}-{{ $subCtr3 + 1 }}">
                                                 <blockquote class="blockquote mb-0">
                                                     <h5>
                                                         <div class="row">
@@ -171,7 +171,9 @@
                                                             </div>
                                                             <div class="col-md-2">
                                                                 <button type="button" class="btn btn-red btn-sm btn-block btn-rounded"
-                                                                        onclick="$(this).deleteMenu('${targetSubmenuID}');">
+                                                                        onclick="$(this).deleteMenu(
+                                                                            '#child-menu-1-{{ $subCtr1 + 1 }}-{{ $subCtr2 + 1 }}-{{ $subCtr3 + 1 }}'
+                                                                        );">
                                                                     <i class="fas fa-minus-circle"></i> Delete
                                                                 </button>
                                                             </div>
