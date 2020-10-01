@@ -56,7 +56,7 @@
                                 <div class="file-field">
                                     <div class="btn btn-primary btn-sm float-left">
                                         <span>Choose file</span>
-                                        <input type="file" class="photo" name="files[]" required>
+                                        <input type="file" class="photo" name="files[]" accept="image/*" required>
                                     </div>
                                     <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text" placeholder="Upload a photo or logo...">
@@ -114,7 +114,8 @@
                                                 <div class="file-field">
                                                     <div class="btn btn-primary btn-sm float-left">
                                                         <span>Choose file</span>
-                                                        <input type="file" class="submenu-attachment" name="files[]" required>
+                                                        <input type="file" class="submenu-attachment" name="files[]"
+                                                               accept="application/pdf" required>
                                                     </div>
                                                     <div class="file-path-wrapper">
                                                         <input class="file-path validate" type="text" placeholder="Upload a file...">

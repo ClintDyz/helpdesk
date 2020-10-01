@@ -23,6 +23,12 @@
                         </div><br>
                         @endif
 
+                        @if(session()->get('failed'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('failed') }}
+                        </div><br>
+                        @endif
+
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -34,7 +40,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($menus as $menu)
+                                @foreach($menus as $ctr => $menu)
                                 <tr>
                                     <td>{{$menu->id}}</td>
                                     <td>{{$menu->name}}</td>
@@ -46,11 +52,11 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a class="btn btn-danger btn-sm" onclick="$('#destroy').submit();">
+                                        <a class="btn btn-danger btn-sm" onclick="$('#destroy-{{ $ctr }}').submit();">
                                             Delete
                                         </a>
 
-                                        <form id="destroy" action="{{ route('menus.destroy', $menu->id)}}" method="post">
+                                        <form id="destroy-{{ $ctr }}" action="{{ route('menus.destroy', $menu->id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
                                         </form>

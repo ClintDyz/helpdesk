@@ -58,7 +58,7 @@
                                     <div class="btn btn-primary btn-sm float-left">
                                         <span>Choose file</span>
                                         <input type="file" class="photo" name="files[]"
-                                               value="{{ url($menu->photo) }}">
+                                               value="{{ url($menu->photo) }}" accept="image/*">
                                     </div>
                                     <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text" placeholder="Upload a photo or logo..."
@@ -230,13 +230,16 @@
                                                                 <div class="file-field">
                                                                     <div class="btn btn-primary btn-sm float-left">
                                                                         <span>Choose file</span>
-                                                                        <input type="file" class="submenu-attachment" name="files[]">
+                                                                        <input type="file" class="submenu-attachment" name="files[]"
+                                                                               accept="application/pdf">
                                                                     </div>
                                                                     <div class="file-path-wrapper">
                                                                         <input class="file-path validate" type="text"
                                                                                value="{{ File::exists($sub3['file_link']) ? $sub3['file_link'] :
-                                                                                      $sub3['file_link'] . ' does not exist' }}"
+                                                                                      $sub3['file_link'] . ' (file does not exist)' }}"
                                                                                placeholder="Upload a file...">
+                                                                        <input type="hidden" class="old-file-path" name="old_file_paths[]"
+                                                                               value="{{ $sub3['file_link'] }}">
                                                                     </div>
                                                                 </div>
                                                                 @endif
@@ -282,13 +285,16 @@
                                                             <div class="file-field">
                                                                 <div class="btn btn-primary btn-sm float-left">
                                                                     <span>Choose file</span>
-                                                                    <input type="file" class="submenu-attachment" name="files[]">
+                                                                    <input type="file" class="submenu-attachment" name="files[]"
+                                                                           accept="application/pdf">
                                                                 </div>
                                                                 <div class="file-path-wrapper">
                                                                     <input class="file-path validate" type="text"
                                                                            value="{{ File::exists($sub2['file_link']) ? $sub2['file_link'] :
-                                                                                 $sub2['file_link'] . ' does not exist' }}"
+                                                                                 $sub2['file_link'] . ' (file does not exist)' }}"
                                                                            placeholder="Upload a file...">
+                                                                    <input type="hidden" class="old-file-path" name="old_file_paths[]"
+                                                                           value="{{ $sub2['file_link'] }}">
                                                                 </div>
                                                             </div>
                                                             @endif
@@ -332,13 +338,16 @@
                                                     <div class="file-field">
                                                         <div class="btn btn-primary btn-sm float-left">
                                                             <span>Choose file</span>
-                                                            <input type="file" class="submenu-attachment" name="files[]">
+                                                            <input type="file" class="submenu-attachment" name="files[]"
+                                                                   accept="application/pdf">
                                                         </div>
                                                         <div class="file-path-wrapper">
                                                             <input class="file-path validate" type="text"
                                                                    value="{{ File::exists($sub1['file_link']) ? $sub1['file_link'] :
-                                                                         $sub1['file_link'] . ' does not exist' }}"
+                                                                         $sub1['file_link'] . ' (file does not exist)' }}"
                                                                    placeholder="Upload a file...">
+                                                            <input type="hidden" class="old-file-path" name="old_file_paths[]"
+                                                                   value="{{ $sub1['file_link'] }}">
                                                         </div>
                                                     </div>
                                                     @endif

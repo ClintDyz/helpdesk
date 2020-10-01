@@ -61,7 +61,8 @@ $(function() {
                                 <div class="file-field">
                                     <div class="btn btn-primary btn-sm float-left">
                                         <span>Choose file</span>
-                                        <input type="file" class="submenu-attachment" name="files[]" required>
+                                        <input type="file" class="submenu-attachment" name="files[]"
+                                               accept="application/pdf" required>
                                     </div>
                                     <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text" placeholder="Upload a file...">
@@ -139,7 +140,8 @@ $(function() {
                                 <div class="file-field">
                                     <div class="btn btn-primary btn-sm float-left">
                                         <span>Choose file</span>
-                                        <input type="file" class="submenu-attachment" name="files[]" required>
+                                        <input type="file" class="submenu-attachment" name="files[]"
+                                               accept="application/pdf" required>
                                     </div>
                                     <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text" placeholder="Upload a file...">
@@ -166,7 +168,8 @@ $(function() {
                         <div class="file-field">
                             <div class="btn btn-primary btn-sm float-left">
                                 <span>Choose file</span>
-                                <input type="file" class="submenu-attachment" name="files[]" required>
+                                <input type="file" class="submenu-attachment" name="files[]"
+                                       accept="application/pdf" required>
                             </div>
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text" placeholder="Upload a file...">
@@ -201,7 +204,8 @@ $(function() {
                 <div class="file-field">
                     <div class="btn btn-primary btn-sm float-left">
                         <span>Choose file</span>
-                        <input type="file" class="submenu-attachment" name="files[]" required>
+                        <input type="file" class="submenu-attachment" name="files[]"
+                               accept="application/pdf" required>
                     </div>
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="text" placeholder="Upload a file...">
@@ -296,7 +300,7 @@ $(function() {
 
         jsonData['name'] = menuName;
         jsonData['description'] = menuDescription;
-        jsonData['photo'] = menuPhoto.name;
+        jsonData['photo'] = menuPhoto ? menuPhoto.name : null;
         jsonData['sub_menu'] = [];
 
         $(parentID).children('blockquote').children('.child-menu').each(function(lvl2Ctr, lvl2) {
@@ -334,7 +338,13 @@ $(function() {
                             if (togSubMenuLinkL4) {
                                 jsonDataL4['file_link'] = $(lvl4).find('.fileurl').val();
                             } else {
-                                jsonDataL4['file_link'] = $(lvl4).find('.submenu-attachment')[0].files[0].name;
+                                const fileAttachment = $(lvl4).find('.submenu-attachment')[0].files[0],
+                                      oldPath = $(lvl4).find('.old-file-path').val() ?
+                                              $(lvl4).find('.old-file-path').val() : null;
+
+                                jsonDataL4['file_link'] = fileAttachment ?
+                                                          $(lvl4).find('.submenu-attachment')[0].files[0].name : null;
+                                jsonDataL4['old_path'] = oldPath;
                             }
 
                             jsonDataL3['sub_menu'].push(jsonDataL4);
@@ -346,7 +356,13 @@ $(function() {
                         if (togSubMenuLinkL3) {
                             jsonDataL3['file_link'] = $(lvl3).find('.fileurl').val();
                         } else {
-                            jsonDataL3['file_link'] = $(lvl3).find('.submenu-attachment')[0].files[0].name;
+                            const fileAttachment = $(lvl3).find('.submenu-attachment')[0].files[0],
+                                  oldPath = $(lvl3).find('.old-file-path').val() ?
+                                            $(lvl3).find('.old-file-path').val() : null;
+
+                            jsonDataL3['file_link'] = fileAttachment ?
+                                                      $(lvl3).find('.submenu-attachment')[0].files[0].name : null;
+                            jsonDataL3['old_path'] = oldPath;
                         }
                     }
 
@@ -359,7 +375,13 @@ $(function() {
                 if (togSubMenuLinkL2) {
                     jsonDataL2['file_link'] = $(lvl2).find('.fileurl').val();
                 } else {
-                    jsonDataL2['file_link'] = $(lvl2).find('.submenu-attachment')[0].files[0].name;
+                    const fileAttachment = $(lvl2).find('.submenu-attachment')[0].files[0],
+                          oldPath = $(lvl2).find('.old-file-path').val() ?
+                                    $(lvl2).find('.old-file-path').val() : null;
+
+                    jsonDataL2['file_link'] = fileAttachment ?
+                                              $(lvl2).find('.submenu-attachment')[0].files[0].name : null;
+                    jsonDataL2['old_path'] = oldPath;
                 }
             }
 
@@ -378,13 +400,28 @@ $(function() {
                 const parentID = '#' + $(this)[0].id,
                       jsonData = procGetParentData(parentID);
                 $('#input-sub-menus').val(jsonData);
-                //e.preventDefault();
             });
         } else {
             alert('Fill-up all the required field/s.');
             e.preventDefault();
         }
     });
+
+    /*
+    $.fn.submitData = () => {
+        if (!hasEmptyInput()) {
+            $('.parent-menu').each(function() {
+                const parentID = '#' + $(this)[0].id,
+                      jsonData = procGetParentData(parentID);
+                $('#input-sub-menus').val(jsonData);
+                console.log(jsonData);
+                //e.preventDefault();
+            });
+        } else {
+            alert('Fill-up all the required field/s.');
+            e.preventDefault();
+        }
+    }*/
 
     $("#sortable").sortable({
         cursor: "move",
