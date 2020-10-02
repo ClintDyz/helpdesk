@@ -11,10 +11,8 @@ class DivisionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $divisions = UserDivision::all();
-
+    public function index() {
+        $divisions = UserDivision::orderBy('name')->paginate(15);
         return view('divisions.index', compact('divisions'));
     }
 

@@ -26,8 +26,7 @@ class UserDivision extends Model {
         'name'
     ];
 
-    public function userunits(){
-
+    public function userUnits(){
         return $this->hasMany(UserUnits::class);
     }
 }

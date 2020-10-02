@@ -13,18 +13,9 @@ class UnitsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-    //   $units = DB::table('cc_user_division')
-    //             ->join('cc_user_unit', 'cc_user_unit.division', 'cc_user_division.id')
-    //             // ->select('cc_user_unit.name','cc_user_unit.created_at','cc_user_unit.updated_at','cc_user_unit.division','cc_user_division.name')
-    //             ->get();
-
-
-    //     //         echo "<pre>";
-    //     //         print_r($units );
-        $units = UserUnit::all();
-
+    public function index() {
+        $units = UserUnit::with('userDivision')->orderBy('name')
+                         ->paginate(15);
         return view('units.index', compact('units'));
     }
 
@@ -121,13 +112,10 @@ class UnitsController extends Controller
         return view('units.create', [
             'divisions' => $divisions
         ]);
-
     }
 
     public function getUnits($divisionID){
         $units = UserUnit::where('division', $divisionID)->get();
         return response()->json($units);
-
-        // dd($units);
     }
 }

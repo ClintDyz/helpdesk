@@ -229,12 +229,9 @@
 </div>
 @endsection
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+@section('custom-js')
 
 <script type="text/javascript">
-	const baseURL = "{{ url('/') }}/";
-
 	$(document).ready(function(){
         $('#division_id').on('change',function() {
             const divisionID = $(this).val();
@@ -242,27 +239,15 @@
 
 
             $.get(urlGetUnits, function(data){
-                $('#unit').html('');
                 let optSelect = '<option value="" disabled> Select Unit</option>';
-                // $('#unit').html('');
+                $('#unit').html('');
+
 				$.each(data, function(ctr, dat) {
                     $('#unit').append('<option value='+dat.id+'>'+dat.name+'</option>');
-                    // const jsonData = $.parseJSON(dat);
-                    // const unitID = jsonData .id,
-                    // unitName = jsonData .name;
-
-                    console.log(dat);
-                    // const unitID = dat.id;
-                    // const unitName = dat.name;
-
-			    // optSelect += '<option value="${unitID}"> ${unitName}</option>';
-			 });
-                // $('#unit').html(optSelect);
-
-
-
-
+			    });
 			});
 		});
 	});
 </script>
+
+@endsection

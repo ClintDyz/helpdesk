@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                    <div class="card uper">
+                <div class="card uper">
                     <div class="card-header">
                         Create Unit
                     </div>
@@ -34,15 +34,25 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary">Add Unit</button>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-primary btn-block btn-md">
+                                        Add Unit
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="{{ Route('units.index') }}" class="btn btn-light btn-block btn-md">
+                                        Cancel
+                                    </a>
+                                </div>
+                            </div>
                         </form>
-                    </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+</div>
 
 @endsection
-

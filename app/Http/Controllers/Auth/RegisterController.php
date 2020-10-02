@@ -37,12 +37,7 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-
-
-
-
+    public function __construct() {
         $this->middleware('auth');
     }
 
@@ -55,8 +50,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
+    protected function validator(array $data) {
         return Validator::make($data, [
             'firstname' => ['required', 'string', 'max:255'],
             'middlename' => ['string', 'max:255'],
@@ -79,8 +73,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
-    {
+    protected function create(array $data) {
         return User::create([
             'firstname' => $data['firstname'],
             'middlename' => $data['middlename'],
@@ -97,22 +90,16 @@ class RegisterController extends Controller
         ]);
     }
 
-
     public function showRegistrationForm() {
-
         $divisions = UserDivision::get();
         return view('auth.register', [
             'divisions' => $divisions
 
         ]);
-
-
     }
+
     public function getUnits($divisionID){
         $units = UserUnit::where('division', $divisionID)->get();
         return response()->json($units);
     }
-
-
-
 }

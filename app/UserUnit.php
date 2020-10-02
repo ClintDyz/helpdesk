@@ -26,8 +26,7 @@ class UserUnit extends Model {
         'name'
     ];
 
-    public function userdivision(){
-
-        return $this->belongsTo(UserDivision::class);
+    public function userDivision() {
+        return $this->belongsTo('App\UserDivision', 'division', 'id');
     }
 }

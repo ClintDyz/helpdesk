@@ -18,14 +18,23 @@ Route::get('sub/{slug}', 'MenuController@index');
 
 Route::middleware(['web', 'auth'])->group(function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+
+    // Helpdesk menu routes
     Route::get('menus/index', 'MenuController@indexBackend')->name('menu.index');
     Route::get('menus/index/order', 'MenuController@editOrder')->name('menu.order');
     Route::post('menus/index/order/update', 'MenuController@updateOrder')->name('menu.order.update');
     Route::resource('menus', 'MenuController');
+
+    // Employee division routes
     Route::get('divisions/index', 'DivisionsController@index')->name('divisions.index');
     Route::resource('divisions', 'DivisionsController');
+
+    // Employee unit routes
     Route::get('units/index', 'UnitsController@index')->name('units.index');
     Route::resource('units', 'UnitsController');
+    Route::get('get-units/{divisionID}', 'UnitsController@getUnits');
+
+    // Settings routes
     Route::get('settings/index', 'SettingsController@index')->name('settings.index');
     Route::resource('settings', 'SettingsController');
 });
