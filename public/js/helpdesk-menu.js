@@ -10,10 +10,9 @@ $(function() {
                              parentID.replace('#child-menu-', ''),
               countChildMenu = $(parentID).children('blockquote').children('.child-menu').length + 1,
               newChildMenuID = `child-menu-${parentNumber}-${countChildMenu}`;
-              levelCount = addType == 'parent' ? 2 :
-                           $(parentID).parents('.child-menu').length + 3,
+              levelCount = addType == 'parent' ? 2 : $(parentID).parents('.child-menu').length + 3,
               htmlChildMenu = `<div class="child-menu p-3 border" id="${newChildMenuID}">
-                <blockquote class="blockquote mb-0">
+                <blockquote class="blockquote mb-0 sortable">
                     <h5>
                         <div class="row">
                             <div class="col-md-10">
@@ -75,6 +74,7 @@ $(function() {
             </div>`;
 
         $(parentID).children('blockquote').children('.child-menu').last().after(htmlChildMenu);
+        initSortableElements();
     }
 
     $.fn.toggleSubMenu = (toogleSubmenuID) => {
@@ -93,7 +93,7 @@ $(function() {
 
         if (newLevelCount < 5) {
             if ($(toogleSubmenuID).is(':checked')) {
-                htmlSubmenu = `<blockquote class="blockquote mb-0">
+                htmlSubmenu = `<blockquote class="blockquote mb-0 sortable">
                     <h5>
                         <div class="row">
                             <div class="col-md-10">
@@ -269,34 +269,11 @@ $(function() {
         return errorCount;
     }
 
-    /*
-    function storeParentData(formData) {
-        storeDataURL = `${baseURL}/menus/`;
-        $.ajax({
-            url: storeDataURL,
-            type: 'POST',
-            enctype: 'multipart/form-data',
-            //async: false,
-            data: formData,
-            //dataType: 'json',
-		    success: function(response) {
-                console.log(response);
-            },
-            fail: function(xhr, textStatus, errorThrown) {
-                storeParentData(formData);
-		    },
-		    error: function(data) {
-                storeParentData(formData);
-		    }
-        });
-    }*/
-
     function procGetParentData(parentID) {
         const menuName = $(parentID).find('.name').val(),
               menuDescription = $(parentID).find('.description').val(),
               menuPhoto = $(parentID).find('.photo')[0].files[0];
         let jsonData = {};
-            //formData = new FormData();
 
         jsonData['name'] = menuName;
         jsonData['description'] = menuDescription;
@@ -388,9 +365,6 @@ $(function() {
             jsonData['sub_menu'].push(jsonDataL2);
         });
 
-        //formData.append('json_data', JSON.stringify(jsonData));
-        //storeParentData(formData);
-
         return JSON.stringify(jsonData);
     }
 
@@ -423,15 +397,19 @@ $(function() {
         }
     }*/
 
-    $("#sortable").sortable({
-        cursor: "move",
-        opacity: 0.5,
-        scroll: false,
-        stop: function() {
-            const data = $(this).sortable('toArray');
-            $('#order').val(data);
-            console.log(data);
-        }
-    });
-    $("#sortable").disableSelection();
+    function initSortableElements() {
+        $(".sortable").sortable({
+            cursor: "move",
+            opacity: 0.5,
+            scroll: false,
+            stop: function() {
+                const data = $(this).sortable('toArray');
+                $('#order').val(data);
+                console.log(data);
+            }
+        });
+        $(".sortable").disableSelection();
+    }
+
+    initSortableElements();
 });

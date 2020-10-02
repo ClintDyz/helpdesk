@@ -25,7 +25,7 @@
                 <div class="px-3">
                     <h5>Container 1</h5>
                     <div class="parent-menu border p-3" id="parent-menu-1">
-                        <blockquote class="blockquote mb-0">
+                        <blockquote class="blockquote mb-0 sortable">
                             <h5>
                                 <div class="row">
                                     <div class="col-md-10">
@@ -66,7 +66,7 @@
                             <hr>
 
                             <div class="child-menu p-3 border" id="child-menu-1-1">
-                                <blockquote class="blockquote mb-0">
+                                <blockquote class="blockquote mb-0 sortable">
                                     <h5>
                                         <div class="row">
                                             <div class="col-md-10">

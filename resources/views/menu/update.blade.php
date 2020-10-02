@@ -25,7 +25,7 @@
                 <div class="px-3">
                     <h5>Container 1</h5>
                     <div class="parent-menu border p-3" id="parent-menu-1">
-                        <blockquote class="blockquote mb-0">
+                        <blockquote class="blockquote mb-0 sortable">
                             <h5>
                                 <div class="row">
                                     <div class="col-md-10">
@@ -72,7 +72,7 @@
                             @if (count($submenus) > 0)
                                 @foreach ($submenus as $subCtr1 => $sub1)
                             <div class="child-menu p-3 border" id="child-menu-1-{{ $subCtr1 + 1 }}">
-                                <blockquote class="blockquote mb-0">
+                                <blockquote class="blockquote mb-0 sortable">
                                     <h5>
                                         <div class="row">
                                             <div class="col-md-10">
@@ -115,7 +115,7 @@
                                         @if (count($sub1['sub_menu']) > 0)
                                             @foreach ($sub1['sub_menu'] as $subCtr2 => $sub2)
                                     <div class="child-menu p-3 border" id="child-menu-1-{{ $subCtr1 + 1 }}-{{ $subCtr2 + 1 }}">
-                                        <blockquote class="blockquote mb-0">
+                                        <blockquote class="blockquote mb-0 sortable">
                                             <h5>
                                                 <div class="row">
                                                     <div class="col-md-10">
@@ -163,7 +163,7 @@
                                                     @foreach ($sub2['sub_menu'] as $subCtr3 => $sub3)
                                             <div class="child-menu p-3 border"
                                                  id="child-menu-1-{{ $subCtr1 + 1 }}-{{ $subCtr2 + 1 }}-{{ $subCtr3 + 1 }}">
-                                                <blockquote class="blockquote mb-0">
+                                                <blockquote class="blockquote mb-0 sortable">
                                                     <h5>
                                                         <div class="row">
                                                             <div class="col-md-10">
@@ -258,7 +258,7 @@
                                             @else
                                             <div class="child-menu p-3 border"
                                                  id="child-menu-1-{{ $subCtr1 + 1 }}-{{ $subCtr2 + 1 }}-1">
-                                                <blockquote class="blockquote mb-0">
+                                                <blockquote class="blockquote mb-0 sortable">
                                                     <div class="pb-2 toggle-submenu-container">
                                                         <!-- Default switch -->
                                                         <div class="custom-control custom-switch">
@@ -306,6 +306,11 @@
                                             </div>
                                             @endif
 
+                                            <button type="button" class="btn btn-outline-info btn-sm btn-block mt-2"
+                                                    onclick="$(this).addSubMenu('#child-menu-1-{{ $subCtr1 + 1 }}-{{ $subCtr2 + 1 }}', 'child');">
+                                                + Add Level 4 Menu
+                                            </button>
+
                                         </blockquote>
                                     </div>
                                             @endforeach
@@ -313,8 +318,8 @@
                                         {{-- End 3rd Level --}}
 
                                     @else
-                                    <div class="child-menu p-3 border" id="child-menu-1-{{ $subCtr1 + 1 }}-1">
-                                        <blockquote class="blockquote mb-0">
+                                    <div class="child-menu p-3 border" id="child-menu-1-{{ $subCtr1 + 1 }}">
+                                        <blockquote class="blockquote mb-0 sortable">
                                             <div class="pb-2 toggle-submenu-container">
                                                 <!-- Default switch -->
                                                 <div class="custom-control custom-switch">
@@ -359,6 +364,10 @@
                                     </div>
                                     @endif
 
+                                    <button type="button" class="btn btn-outline-info btn-sm btn-block mt-2"
+                                            onclick="$(this).addSubMenu('#child-menu-1-{{ $subCtr1 + 1 }}', 'child');">
+                                        + Add Level 3 Menu
+                                    </button>
                                 </blockquote>
                             </div>
                                 @endforeach

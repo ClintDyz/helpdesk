@@ -27,7 +27,7 @@
                                     </a>
                                 </div>
 
-                                <div id="sortable" class="row pl-5 pr-5">
+                                <div class="row pl-5 pr-5 sortable">
                                     @if (count($menuList) > 0)
                                         @foreach($menuList as $menu)
                                     <div class="col-sm-4 col-md-3 col-lg-2 mt-3 ui-state-default"
