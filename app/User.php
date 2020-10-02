@@ -18,9 +18,6 @@ class User extends Authenticatable {
      */
     protected $table = 'cc_users';
 
-
-
-
     /**
      * The attributes that are mass assignable.
      *
@@ -60,14 +57,45 @@ class User extends Authenticatable {
         'email_verified_at' => 'datetime',
     ];
 
-
     public function division(){
-
         return $this->belongsTo(UserDivision::class);
-
-
     }
 
+    public function getEmployee($id) {
+        $userData = User::find($id);
+
+        if ($userData) {
+            $firstname = $userData->firstname;
+            $middleInitial = !empty($userData->middlename) ?
+                            ' '.$userData->middlename[0].'. ' : ' ';
+            $lastname = $userData->lastname;
+            $fullname = $firstname.$middleInitial.$lastname;
+            $position = $userData->position;
+            //$signature = $userData->signature;
+
+            /*
+            $groups = !empty($userData->groups) ?
+                      unserialize($userData->groups) :
+                      [];
+            $roles = !empty($userData->roles) ?
+                     unserialize($userData->roles) :
+                     [];*/
+        } else {
+            $fullname = NULL;
+            $position = NULL;
+            //$signature = NULL;
+            //$groups = [];
+            //$roles = [];
+        }
+
+        return (object) [
+            'name' => $fullname,
+            'position' => $position,
+            //'signature' => $signature,
+            //'groups' => $groups,
+            //'roles' => $roles,
+        ];
+    }
 }
 
 

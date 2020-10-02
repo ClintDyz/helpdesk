@@ -98,8 +98,8 @@
             <div class="collapse navbar-collapse" id="navbar-responsive">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" onclick="openNav()"> ☰
-                        <span class="sr-only">(current)</span>
+                        <a class="nav-link elegant-color px-3" onclick="openNav()">
+                            <i class="fas fa-bars"></i> <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">

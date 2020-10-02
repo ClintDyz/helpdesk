@@ -26,7 +26,7 @@ class MenuController extends Controller
     }
 
     public function indexBackend() {
-        $menus = Menu::orderBy('name')->get();
+        $menus = Menu::orderBy('name')->paginate(15);
         return view('menu.index-backend', compact('menus'));
     }
 

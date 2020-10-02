@@ -137,12 +137,12 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        <button id="btn-finalize" type="submit" class="btn btn-primary btn-lg btn-block mt-3">
+                        <button id="btn-finalize" type="submit" class="btn btn-primary btn-md btn-block mt-3">
                             Finilize and Save
                         </button>
                     </div>
                     <div class="col-md-6">
-                        <a href="{{ Route('menu.index') }}" class="btn btn-light btn-lg btn-block mt-3">
+                        <a href="{{ Route('menu.index') }}" class="btn btn-light btn-md btn-block mt-3">
                             Cancel
                         </a>
                     </div>

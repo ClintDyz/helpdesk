@@ -29,4 +29,8 @@ class Menu extends Model {
         'sub_menus',
         'created_by',
     ];
+
+    public function creator() {
+        return $this->hasOne('App\User', 'id', 'created_by');
+    }
 }
