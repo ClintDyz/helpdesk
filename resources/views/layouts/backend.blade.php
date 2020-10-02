@@ -122,8 +122,7 @@
                             </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Profile</a>
-                            <a class="dropdown-item" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item" onclick="$('#logout-form').submit();">
                                 Logout
                             </a>
                         </div>

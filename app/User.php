@@ -57,8 +57,12 @@ class User extends Authenticatable {
         'email_verified_at' => 'datetime',
     ];
 
-    public function division(){
-        return $this->belongsTo(UserDivision::class);
+    public function division() {
+        return $this->hasOne('App\UserDivision', 'id', 'division');
+    }
+
+    public function unit() {
+        return $this->hasOne('App\UserUnit', 'id', 'unit');
     }
 
     public function getEmployee($id) {

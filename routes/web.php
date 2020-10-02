@@ -37,6 +37,9 @@ Route::middleware(['web', 'auth'])->group(function () {
     // Settings routes
     Route::get('settings/index', 'SettingsController@index')->name('settings.index');
     Route::resource('settings', 'SettingsController');
+
+    // User routes
+    Route::resource('accounts', 'AccountController');
 });
 
 

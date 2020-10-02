@@ -21,6 +21,10 @@
                         </div><br>
                         @endif
 
+                        <p class="italic">
+                            <i class="fas fa-question-circle"></i> Drag the icons to order them.
+                        </p>
+
                         <form action="{{ Route('menu.order.update') }}" method="POST">
                             @csrf
 
@@ -63,7 +67,7 @@
                                     </button>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="{{ Route('divisions.index') }}" class="btn btn-light btn-block btn-md">
+                                    <a href="{{ Route('menu.index') }}" class="btn btn-light btn-block btn-md">
                                         Cancel
                                     </a>
                                 </div>

@@ -26,7 +26,7 @@
         </a>
         <div id="library" class="collapse blue-grey lighten-5">
             <a class="btn btn-white btn-block pt-3 text-left"
-               href="#">
+               href="{{ route('accounts.index') }}">
                 <h6>Users</h6>
             </a>
             <a class="btn btn-white btn-block pt-3 text-left"
@@ -60,8 +60,8 @@
         </a>
         <div id="profile" class="collapse blue-grey lighten-5">
             <a class="btn btn-white btn-block pt-3 text-left"
-               href="#">
-                <h6>View/Update</h6>
+               href="{{ route('accounts.show', Auth::user()->id) }}">
+                <h6>Your Profile</h6>
             </a>
             <a class="btn btn-white btn-block pt-3 text-left"
                href="{{ route('register') }}">
