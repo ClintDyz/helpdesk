@@ -23,7 +23,6 @@
                 @csrf
 
                 <div class="px-3">
-                    <h5>Container 1</h5>
                     <div class="parent-menu border p-3" id="parent-menu-1">
                         <blockquote class="blockquote mb-0 sortable">
                             <h5>
@@ -32,7 +31,7 @@
                                         Level 1
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="button" class="btn btn-red btn-sm btn-block btn-rounded"
+                                        <button type="button" class="btn btn-red btn-sm btn-block btn-rounded px-0 py-1"
                                                 onclick="$(this).deleteMenu('#parent-menu-1');">
                                             <i class="fas fa-minus-circle"></i> Delete
                                         </button>
@@ -73,7 +72,7 @@
                                                 Level 2
                                             </div>
                                             <div class="col-md-2">
-                                                <button type="button" class="btn btn-red btn-sm btn-block btn-rounded"
+                                                <button type="button" class="btn btn-red btn-sm btn-block btn-rounded px-0 py-1"
                                                         onclick="$(this).deleteMenu('#child-menu-1-1');">
                                                     <i class="fas fa-minus-circle"></i> Delete
                                                 </button>

@@ -1,12 +1,5 @@
 @extends('layouts.app')
 
-@section('custom-css')
-
-<link rel="stylesheet" href="{{ Asset('css/stackpath.css') }}">
-<link rel="stylesheet" href="{{ Asset('css/style_sidebar.css') }}">
-
-@endsection
-
 @section('side-nav')
 
 @include('partials.sidebar-menu')
@@ -36,7 +29,6 @@
 
 @section('custom-js')
 
-<script type="text/javascript" src="{{ Asset('js/rocket-loader.min.js') }}"></script>
 <script>
     $(function() {
         $.fn.displayPDF = function(url) {

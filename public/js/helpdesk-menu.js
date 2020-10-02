@@ -19,7 +19,7 @@ $(function() {
                                 Level ${levelCount}
                             </div>
                             <div class="col-md-2">
-                                <button type="button" class="btn btn-red btn-sm btn-block btn-rounded"
+                                <button type="button" class="btn btn-red btn-sm btn-block btn-rounded px-0 py-1"
                                         onclick="$(this).deleteMenu('#${newChildMenuID}');">
                                     <i class="fas fa-minus-circle"></i> Delete
                                 </button>
@@ -100,7 +100,7 @@ $(function() {
                                 Level ${newLevelCount}
                             </div>
                             <div class="col-md-2">
-                                <button type="button" class="btn btn-red btn-sm btn-block btn-rounded"
+                                <button type="button" class="btn btn-red btn-sm btn-block btn-rounded px-0 py-1"
                                         onclick="$(this).deleteMenu('${targetSubmenuID}');">
                                     <i class="fas fa-minus-circle"></i> Delete
                                 </button>
