@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Menu;
+use App\Setting;
 
 class HomeController extends Controller
 {
@@ -33,5 +34,10 @@ class HomeController extends Controller
         }
 
         return view('menu.index', compact('menus'));
+    }
+
+    public function about() {
+        $config = Setting::orderBy('id', 'desc')->first();
+        return view('about', compact('config'));
     }
 }

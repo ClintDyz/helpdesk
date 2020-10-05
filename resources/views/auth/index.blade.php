@@ -6,12 +6,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header stylish-color white-text">{{ __('Divisions') }}</div>
+                <div class="card-header stylish-color white-text">{{ __('Users') }}</div>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="{{ route('divisions.create') }}" class="btn btn-info" role="button">{{ __('Add Division') }}</a>
-                        <!-- <a class="nav-link" href="divisions/create">{{ __('Add Division') }}</a> -->
-                        <!-- <button type="button" class="btn btn-success" href="divisions/create">Add Division</button> -->
+                        <a href="{{ route('register') }}" class="btn btn-info" role="button">{{ __('Register User') }}</a>
+                        <!-- <a class="nav-link" href="accounts/create">{{ __('Register User') }}</a> -->
+                        <!-- <button type="button" class="btn btn-success" href="accounts/create">Add account</button> -->
                     </li>
                 </ul>
 
@@ -31,8 +31,14 @@
                                     <th width="3%" class="text-center">
                                         <small>#</small>
                                     </th>
-                                    <th width="60%" class="text-center">
-                                        <small>DIVISION NAME</small>
+                                    <th width="30%" class="text-center">
+                                        <small>NAME/POSITION</small>
+                                    </th>
+                                    <th width="15%" class="text-center">
+                                        <small>DIVISION</small>
+                                    </th>
+                                    <th width="15%" class="text-center">
+                                        <small>UNIT</small>
                                     </th>
                                     <th width="13%" class="text-center">
                                         <small>CREATED AT</small>
@@ -46,14 +52,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($divisions as $ctr => $division)
+                                @foreach($users as $ctr => $user)
                                 <tr>
-                                    <td>{{ $divisions->firstItem() + $ctr }}</td>
-                                    <td>{{$division->name}}</td>
-                                    <td align="center">{{$division->created_at}}</td>
-                                    <td align="center">{{$division->updated_at}}</td>
+                                    <td>{{ $users->firstItem() + $ctr }}</td>
                                     <td>
-                                        <a href="{{ route('divisions.edit', $division->id)}}"
+                                        <b>{{ strtoupper(Auth::user()->getEmployee($user->id)->name) }}</b>
+                                        <br>
+                                        [ {{ $user->position }} ]
+                                    </td>
+                                    <td align="center">{{$user->empdivision->name}}</td>
+                                    <td align="center">{{$user->empunit->name}}</td>
+                                    <td align="center">{{$user->created_at}}</td>
+                                    <td align="center">{{$user->updated_at}}</td>
+                                    <td>
+                                        <a href="{{ route('accounts.edit', $user->id)}}"
                                             class="btn btn-sm btn-outline-orange btn-block z-depth-0">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -61,7 +73,7 @@
                                             onclick="$('#destroy-{{ $ctr }}').submit();">
                                             <i class="far fa-trash-alt"></i>
                                         </a>
-                                        <form action="{{ route('divisions.destroy', $division->id)}}" id="destroy-{{ $ctr }}"
+                                        <form action="{{ route('accounts.destroy', $user->id)}}" id="destroy-{{ $ctr }}"
                                             method="post">
                                             @csrf
                                             @method('DELETE')
@@ -75,7 +87,7 @@
 
                     <div class="row pt-5">
                         <div class="col-md-12 flex-center">
-                            {{ $divisions->links() }}
+                            {{ $users->links() }}
                         </div>
                     </div>
                 </div>

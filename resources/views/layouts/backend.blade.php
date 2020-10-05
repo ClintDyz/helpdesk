@@ -120,8 +120,11 @@
                             <a class="dropdown-item" href="{{ route('home') }}">
                                 <i class="fas fa-globe"></i> Site
                             </a>
+                            <a class="dropdown-item" href="{{ route('about') }}">
+                                About
+                            </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="{{ route('accounts.show', Auth::user()->id) }}">Profile</a>
                             <a class="dropdown-item" onclick="$('#logout-form').submit();">
                                 Logout
                             </a>

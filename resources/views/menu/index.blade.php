@@ -7,8 +7,8 @@
     <div class="container-fluid wow animated fadeIn">
 		<div class="row mt-3">
 			<div class="col-xs-12 col-md-12">
-				<div class="card z-depth-1">
-					<div class="card-body" style="background: #2f45754f;">
+				<div class="card z-depth-1" style="background: #2f45754f;">
+					<div class="card-body" style="background: #8ea1cc40;">
 						<div class="card-title">
 							<img src="{{ url('images/icons/HelpDesk.png') }}">
                         </div>

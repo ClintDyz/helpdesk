@@ -13,7 +13,7 @@
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
-Route::view('about','about');
+Route::get('about','HomeController@about')->name('about');
 Route::get('sub/{slug}', 'MenuController@index');
 
 Route::middleware(['web', 'auth'])->group(function () {
@@ -39,6 +39,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::resource('settings', 'SettingsController');
 
     // User routes
+    Route::get('accounts/index', 'AccountController@index')->name('accounts.index');
     Route::resource('accounts', 'AccountController');
 });
 

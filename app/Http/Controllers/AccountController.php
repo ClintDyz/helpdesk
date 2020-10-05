@@ -16,30 +16,9 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $users = User::all();
-        $divisions = UserDivision::with(['division', 'unit'])->orderBy('firstname')->get();
-        return view('auth.index', compact('users', 'divisions'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $users = User::with(['empdivision', 'empunit'])->orderBy('firstname')
+                     ->paginate(15);
+        return view('auth.index', compact('users'));
     }
 
     /**
@@ -49,9 +28,9 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        $user = User::find($id);
-        $divisions = UserDivision::orderBy('name')->get();
-        $units = UserUnit::orderBy('name')->get();
+        $divisions = $this->getUserData($id)->divisions;
+        $units = $this->getUserData($id)->units;
+        $user = $this->getUserData($id)->user;
         return view('auth.profile', compact('id', 'user', 'divisions', 'units'));
     }
 
@@ -62,7 +41,10 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        //
+        $divisions = $this->getUserData($id)->divisions;
+        $units = $this->getUserData($id)->units;
+        $user = $this->getUserData($id)->user;
+        return view('auth.update', compact('id', 'user', 'divisions', 'units'));
     }
 
     /**
@@ -82,6 +64,8 @@ class AccountController extends Controller
         $mobileNo = $request->mobile_no;
         $email = $request->email;
         $username = $request->username;
+        $role = $request->role;
+        $isActive = $request->is_active;
         $password = $request->password;
         $confirmPassword = $request->confirm_password;
 
@@ -106,6 +90,14 @@ class AccountController extends Controller
                 }
             }
 
+            if ($role) {
+                $user->role = $role;
+            }
+
+            if ($isActive) {
+                $user->is_active = $isActive;
+            }
+
             $user->save();
 
             $msg = 'Profile is successfully updated.';
@@ -124,5 +116,13 @@ class AccountController extends Controller
      */
     public function destroy($id) {
         //
+    }
+
+    private function getUserData($id) {
+        return (object) [
+            'user' => User::find($id),
+            'divisions' => UserDivision::orderBy('name')->get(),
+            'units' => UserUnit::orderBy('name')->get()
+        ];
     }
 }
