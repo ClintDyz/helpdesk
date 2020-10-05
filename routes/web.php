@@ -15,6 +15,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('about','HomeController@about')->name('about');
 Route::get('sub/{slug}', 'MenuController@index');
+Route::get('get-units/{divisionID}', 'UnitsController@getUnits');
 
 Route::middleware(['web', 'auth'])->group(function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
@@ -32,7 +33,6 @@ Route::middleware(['web', 'auth'])->group(function () {
     // Employee unit routes
     Route::get('units/index', 'UnitsController@index')->name('units.index');
     Route::resource('units', 'UnitsController');
-    Route::get('get-units/{divisionID}', 'UnitsController@getUnits');
 
     // Settings routes
     Route::get('settings/index', 'SettingsController@index')->name('settings.index');

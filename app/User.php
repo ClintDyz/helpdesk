@@ -29,13 +29,14 @@ class User extends Authenticatable {
         'middlename',
         'lastname',
         'position',
-        'division_id',
+        'division',
         'unit',
         'mobile_no',
         'email',
         'username',
         'password',
         'role',
+        'avatar',
         'is_active',
     ];
 

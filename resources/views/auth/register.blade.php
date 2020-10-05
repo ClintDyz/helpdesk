@@ -41,7 +41,6 @@
                                 </div>
                             </div>
 
-
                             <div class="form-group row">
                                 <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
 
@@ -55,8 +54,6 @@
                                     @enderror
                                 </div>
                             </div>
-
-
 
                             <div class="form-group row">
                                 <label for="position" class="col-md-4 col-form-label text-md-right">{{ __('Position') }}</label>
@@ -72,12 +69,11 @@
                                 </div>
                             </div>
 
-
                             <div class="form-group row">
                                 <label for="division_id" class="col-md-4 col-form-label text-md-right">{{ __('Division') }}</label>
 
                                 <div class="col-md-6">
-                                    <select name="division_id" id="division_id"  class="form-control @error('division_id') is-invalid @enderror">
+                                    <select name="division" id="division_id"  class="form-control @error('division_id') is-invalid @enderror">
                                         <option selected disabled>--Select Division--</option>
                                     @foreach ($divisions as $division)
                                         <option value="{{$division->id }}">{{ $division->name}}</option>
@@ -85,7 +81,6 @@
                                     </select>
                                 </div>
                             </div>
-
 
                             <div class="form-group row">
                                 <label for="division_id" class="col-md-4 col-form-label text-md-right">{{ __('Unit') }}</label>
@@ -97,10 +92,6 @@
                                     </select>
                                 </div>
                             </div>
-
-
-
-
 
                             <div class="form-group row">
                                 <label for="mobile_no" class="col-md-4 col-form-label text-md-right">{{ __('Mobile Number') }}</label>
@@ -116,10 +107,6 @@
                                 </div>
                             </div>
 
-
-
-
-
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -133,7 +120,6 @@
                                     @enderror
                                 </div>
                             </div>
-
 
                             <div class="form-group row">
                                 <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
@@ -149,7 +135,8 @@
                                 </div>
                             </div>
 
-
+                            @guest
+                            @else
                             <div class="form-group row">
                                 <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
@@ -188,6 +175,7 @@
 
                                 </div>
                             </div>
+                            @endguest
 
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>

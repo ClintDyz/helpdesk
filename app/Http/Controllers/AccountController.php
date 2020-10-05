@@ -115,7 +115,19 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        //
+        try {
+            //Menu::where('id', $id)->delete();
+            $user = User::find($id);
+            $name = $user->getEmployee($user->id)->name;
+            User::destroy($id);
+
+            $msg = Auth::user()->firstname . " successfully deleted the account of $name.";
+            return redirect()->route('accounts.index')->with('success', $msg);
+
+        } catch (\Throwable $th) {
+            $msg = "Unknown error, try again.";
+            return redirect()->route('accounts.index')->with('failed', $msg);
+        }
     }
 
     private function getUserData($id) {

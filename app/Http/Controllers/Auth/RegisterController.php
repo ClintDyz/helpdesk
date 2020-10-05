@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -30,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -38,11 +40,8 @@ class RegisterController extends Controller
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
-
-
-
 
     /**
      * Get a validator for an incoming registration request.
@@ -56,13 +55,13 @@ class RegisterController extends Controller
             'middlename' => ['string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'position' => ['required', 'string', 'max:255'],
-            'division_id' => ['required', 'integer', 'max:255'],
+            'division' => ['required', 'integer', 'max:255'],
             'unit' => ['required', 'integer', 'max:255'],
             'mobile_no' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'username' => ['required', 'string', 'max:255', 'unique:users'],
-            'role' => ['required', 'string', 'max:255'],
-            'is_active' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:cc_users'],
+            'username' => ['required', 'string', 'max:255', 'unique:cc_users'],
+            //'role' => ['required', 'string', 'max:255'],
+            //'is_active' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -79,13 +78,13 @@ class RegisterController extends Controller
             'middlename' => $data['middlename'],
             'lastname' => $data['lastname'],
             'position' => $data['position'],
-            'division_id' => $data['division_id'],
+            'division' => $data['division'],
             'unit' => $data['unit'],
             'mobile_no' => $data['mobile_no'],
             'email' => $data['email'],
             'username' => $data['username'],
-            'role' => $data['role'],
-            'is_active' => $data['is_active'],
+            'role' => isset($data['role']) ? $data['role'] : 'employee',
+            'is_active' => isset($data['is_active']) ? $data['is_active'] : 'n',
             'password' => Hash::make($data['password']),
         ]);
     }
@@ -96,6 +95,19 @@ class RegisterController extends Controller
             'divisions' => $divisions
 
         ]);
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $msg = 'Please contact your administrator for your account activation.';
+        $request->session()->flash('success', $msg);
+
+        return $this->registered($request, $user)
+                ?: redirect($this->redirectPath());
     }
 
     public function getUnits($divisionID){

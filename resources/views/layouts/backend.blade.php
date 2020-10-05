@@ -96,6 +96,16 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbar-responsive">
+                @guest
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="navbar-brand waves-effect" href="{{ route('home') }}">
+                            <img src="{{ Asset('images/logo/dostlogo.png') }}"  height="25" alt="DOST-CAR">
+                            DOST-CAR
+                        </a>
+                    </li>
+                </ul>
+                @else
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link elegant-color px-3" onclick="openNav()">
@@ -131,6 +141,7 @@
                         </div>
                     </li>
                 </ul>
+                @endguest
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     @csrf
@@ -142,7 +153,10 @@
     </header>
     <!--Main Navigation-->
 
+    @guest
+    @else
     @include('partials.sidenav')
+    @endguest
     <main class="container-fluid wow animated fadeIn px-0">
         <div class="content">
             @yield('content')
