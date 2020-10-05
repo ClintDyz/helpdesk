@@ -16,6 +16,7 @@
                 <div class="card z-depth-1">
                     <div class="card">
                         <div class="card-body p-2">
+                            <a class="btn btn-primary btn-sm float-right" href="{{ route('home') }}">Back</a>
                             <iframe id="viewer" src="" width="100%"></iframe>
                         </div>
                     </div>

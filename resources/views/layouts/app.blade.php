@@ -51,7 +51,7 @@
                 <ul class="navbar-nav ml-auto nav-flex-icons">
                     @guest
                     <li class="nav-item">
-                        <a class="nav-link waves-effect waves-light">
+                        <a class="nav-link waves-effect waves-light" href="{{ route('about') }}">
                             About
                         </a>
                     </li>
