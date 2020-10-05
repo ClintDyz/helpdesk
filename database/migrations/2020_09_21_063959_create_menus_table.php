@@ -16,7 +16,7 @@ class CreateMenusTable extends Migration
         Schema::create('cc_menus', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('order');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('name');
             $table->text('description')->nullable();
             $table->text('photo')->nullable();

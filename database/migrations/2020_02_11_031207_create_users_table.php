@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->foreign('unit')->references('id')->on('cc_user_units');
             $table->string('mobile_no', 225)->nullable();
             $table->string('email')->unique()->nullable();
-            $table->string('username', 100);
+            $table->string('username', 100)->unique();
             $table->string('password');
             $table->text('avatar')->nullable();
             $table->enum('role', ['admin', 'employee']);
