@@ -51,19 +51,19 @@
                 </div>
                 <div class="form-group">
                     <label for="background">Background:</label>
-                    <textarea class="form-control" name="background"  value="{{ $settings->background}}"></textarea>
+                    <textarea class="form-control" name="background">{{ $settings->background}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="vision">Vision:</label>
-                    <textarea class="form-control" name="vision"  value="{{ $settings->vision}}"></textarea>
+                    <textarea class="form-control" name="vision">{{ $settings->vision}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="mandate">Mandate:</label>
-                    <textarea class="form-control" name="mandate"  value="{{ $settings->mandate}}"></textarea>
+                    <textarea class="form-control" name="mandate">{{ $settings->mandate}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="mission">Mission:</label>
-                    <textarea class="form-control" name="mission"  value="{{ $settings->mission}}"></textarea>
+                    <textarea class="form-control" name="mission">{{ $settings->mission }}</textarea>
                 </div>
                 <hr>
                 <div class="row">

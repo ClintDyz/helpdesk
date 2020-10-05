@@ -51,16 +51,17 @@
                                 <tr>
                                     <td>
                                         <p>
-                                            <b class="font-weight-bolder">Logo:</b> {{$setting->logo}}<br>
-                                            <b class="font-weight-bolder">Agency Name:</b> {{$setting->agency_name}} ({{$setting->abbrev}})<br>
-                                            <b class="font-weight-bolder">Address:</b> {{$setting->address}}<br>
-                                            <b class="font-weight-bolder">Contact No.:</b> {{$setting->contact_no}}<br>
-                                            <b class="font-weight-bolder">Website:</b> {{$setting->website}}<br>
-                                            <b class="font-weight-bolder">Email:</b> {{$setting->email}}<br>
-                                            <b class="font-weight-bolder">Background:</b> {{$setting->background}}<br>
-                                            <b class="font-weight-bolder">Vision:</b> {{$setting->vision}}<br>
-                                            <b class="font-weight-bolder">Mandate:</b> {{$setting->mandate}}<br>
-                                            <b class="font-weight-bolder">Mission:</b> {{$setting->mission}}/p>
+                                            <b class="font-weight-bolder">Logo:</b> {{$setting->logo}}<br><br>
+                                            <b class="font-weight-bolder">Agency Name:</b> {{$setting->agency_name}} ({{$setting->abbrev}})<br><br>
+                                            <b class="font-weight-bolder">Address:</b> {{$setting->address}}<br><br>
+                                            <b class="font-weight-bolder">Contact No.:</b> {{$setting->contact_no}}<br><br>
+                                            <b class="font-weight-bolder">Website:</b> {{$setting->website}}<br><br>
+                                            <b class="font-weight-bolder">Email:</b> {{$setting->email}}<br><br>
+                                            <b class="font-weight-bolder">Background:</b> {{$setting->background}}<br><br>
+                                            <b class="font-weight-bolder">Vision:</b> {{$setting->vision}}<br><br>
+                                            <b class="font-weight-bolder">Mandate:</b> {{$setting->mandate}}<br><br>
+                                            <b class="font-weight-bolder">Mission:</b> {{$setting->mission}}
+                                        </p>
                                     </td>
                                     <td align="center">{{$setting->updated_at}}</td>
                                     <td>
