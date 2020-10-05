@@ -15,6 +15,23 @@ class HomeController extends Controller
      */
     public function index() {
         $menuList = Menu::orderBy('order')->get();
-        return view('menu.index', compact('menuList'));
+        $menus = [];
+        $itemCount = 0;
+        $slideNo = 0;
+
+        if (count($menuList) > 0) {
+            foreach ($menuList as $menu) {
+                $menus[$slideNo][$itemCount] = $menu;
+
+                $itemCount++;
+
+                if ($itemCount == 4) {
+                    $itemCount == 0;
+                    $slideNo++;
+                }
+            }
+        }
+
+        return view('menu.index', compact('menus'));
     }
 }
