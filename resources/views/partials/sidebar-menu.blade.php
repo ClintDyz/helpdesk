@@ -34,7 +34,7 @@
                                             @if ($sub3['has_sub_menu'])
 
                                             @else
-                                                @if (!$sub2['has_file_link'])
+                                                @if (!$sub3['has_file_link'] && File::exists($sub3['file_link']) && $sub3['file_link'])
                                 <a href="#" onclick="$(this).displayPDF('{{ url($sub3['file_link']) }}');">
                                     {{ $sub3['name'] }}
                                 </a>
@@ -51,7 +51,7 @@
                             <!-- End Level 2 -->
                         </ul>
                                 @else
-                                    @if (!$sub2['has_file_link'])
+                                    @if (!$sub2['has_file_link'] && File::exists($sub2['file_link']) && $sub2['file_link'])
                         <a href="#" onclick="$(this).displayPDF('{{ url($sub2['file_link']) }}');">
                             {{ $sub2['name'] }}
                         </a>
@@ -69,7 +69,7 @@
                     <!-- End Level 2 -->
                 </ul>
                     @else
-                        @if (!$sub1['has_file_link'])
+                        @if (!$sub1['has_file_link'] && File::exists($sub1['file_link']) && $sub1['file_link'])
                 <a href="#" onclick="$(this).displayPDF('{{ url($sub1['file_link']) }}');">
                     {{ $sub1['name'] }}
                 </a>

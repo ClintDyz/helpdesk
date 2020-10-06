@@ -16,30 +16,38 @@
                         </div>
 
                         <div class="card-body">
-                            <p class="text-center">
+                            <p class="text-center px-5">
                                 <b>{{ strtoupper($config->agency_name) }} {!! $config->abbrev ? "($config->abbrev)" : '' !!}</b><br>
                                 <small>{!! $config->address ? "$config->address<br>" : '' !!}</small>
-                                <small>{!! $config->contact_no ? "$config->contact_no<br>" : '' !!}</small>
+                                <small>
+                                    @if ($config->contact_no && $config->email)
+                                    {!! "$config->contact_no | $config->email<br>" !!}
+                                    @elseif ($config->contact_no && !$config->email)
+                                    {!! "$config->contact_no<br>" !!}
+                                    @elseif (!$config->contact_no && $config->email)
+                                    {!! "$config->email<br>" !!}
+                                    @endif
+                                </small>
                                 <small>{!! $config->website ? "$config->website<br>" : '' !!}</small>
                             </p>
                             <hr>
                             <p class="text-center p-5">
-                                <b>Background</b><br>
+                                <b>Background</b><br><br>
                                 {{ $config->background }}
                             </p>
                             <hr>
                             <p class="text-center p-5">
-                                <b>Vision</b><br>
+                                <b>Vision</b><br><br>
                                 {{ $config->vision }}
                             </p>
                             <hr>
                             <p class="text-center p-5">
-                                <b>Mandate</b><br>
+                                <b>Mandate</b><br><br>
                                 {{ $config->mandate }}
                             </p>
                             <hr>
                             <p class="text-center p-5">
-                                <b>Mission</b><br>
+                                <b>Mission</b><br><br>
                                 {{ $config->mission }}
                             </p>
                         </div>
