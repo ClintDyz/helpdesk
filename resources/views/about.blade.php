@@ -30,26 +30,38 @@
                                 </small>
                                 <small>{!! $config->website ? "$config->website<br>" : '' !!}</small>
                             </p>
+
+                            @if ($config->background)
                             <hr>
                             <p class="text-center p-5">
                                 <b>Background</b><br><br>
                                 {{ $config->background }}
                             </p>
+                            @endif
+
+                            @if ($config->vision)
                             <hr>
                             <p class="text-center p-5">
                                 <b>Vision</b><br><br>
                                 {{ $config->vision }}
                             </p>
+                            @endif
+
+                            @if ($config->mandate)
                             <hr>
                             <p class="text-center p-5">
                                 <b>Mandate</b><br><br>
                                 {{ $config->mandate }}
                             </p>
+                            @endif
+
+                            @if ($config->mission)
                             <hr>
                             <p class="text-center p-5">
                                 <b>Mission</b><br><br>
                                 {{ $config->mission }}
                             </p>
+                            @endif
                         </div>
                     </div>
 				</div>
