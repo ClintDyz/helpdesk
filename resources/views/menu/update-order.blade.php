@@ -10,7 +10,7 @@
                     <div class="card-header">
                         Heldesk Menu Order
                     </div>
-                    <div id="infosys-display" class="card-body rounded white p-5">
+                    <div class="card-body rounded white p-5">
                         @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>

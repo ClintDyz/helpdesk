@@ -19,6 +19,7 @@
         </div>
     </div>
 
+    @if (Auth::user()->role == 'admin')
     <div class="mt-2">
         <a class="btn-indigo white-text btn-block text-left dropdown-toggle"
            data-toggle="collapse" data-target="#library">
@@ -39,7 +40,9 @@
             </a>
         </div>
     </div>
+    @endif
 
+    @if (Auth::user()->role == 'admin')
     <div class="mt-2">
         <a class="btn-indigo white-text btn-block text-left dropdown-toggle"
            data-toggle="collapse" data-target="#conf">
@@ -52,6 +55,7 @@
             </a>
         </div>
     </div>
+    @endif
 
     <div class="mt-2">
         <a class="btn-indigo white-text btn-block text-left dropdown-toggle"
@@ -63,10 +67,14 @@
                href="{{ route('accounts.show', Auth::user()->id) }}">
                 <h6>Your Profile</h6>
             </a>
+
+            @if (Auth::user()->role == 'admin')
             <a class="btn btn-white btn-block pt-3 text-left"
                href="{{ route('register') }}">
                 <h6>Register User</h6>
             </a>
+            @endif
+
             <a class="btn btn-white btn-block pt-3 text-left"
                href="#" onclick="$('#logout-form').submit();">
                 <h6>Logout</h6>

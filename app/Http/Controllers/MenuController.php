@@ -27,6 +27,13 @@ class MenuController extends Controller
 
     public function indexBackend() {
         $menus = Menu::orderBy('name')->paginate(15);
+
+        /*
+        if (Auth::user()->role == 'employee') {
+            $menus = Menu::where('created_by', Auth::user()->id)
+                         ->orderBy('name')->paginate(15);
+        }*/
+
         return view('menu.index-backend', compact('menus'));
     }
 

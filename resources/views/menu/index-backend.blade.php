@@ -9,7 +9,9 @@
                 <div class="card-header stylish-color white-text">{{ __('Helpdesk Menu') }}</div>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
+                        @if (Auth::user()->role == 'admin')
                         <a href="{{ route('menu.order') }}" class="btn btn-info" role="button">{{ __('Update Order of Menu') }}</a>
+                        @endif
                         <a href="{{ route('menus.create') }}" class="btn btn-info" role="button">{{ __('Add Menu') }}</a>
                         <!-- <a class="nav-link" href="divisions/create">{{ __('Add Division') }}</a> -->
                         <!-- <button type="button" class="btn btn-success" href="divisions/create">Add Division</button> -->

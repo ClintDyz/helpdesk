@@ -108,7 +108,7 @@
                 @else
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link elegant-color px-3" onclick="openNav()">
+                        <a class="nav-link elegant-color px-3 btn-rounded" onclick="openNav()">
                             <i class="fas fa-bars"></i> <span class="sr-only">(current)</span>
                         </a>
                     </li>

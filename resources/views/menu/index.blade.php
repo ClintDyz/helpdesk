@@ -57,7 +57,7 @@
 
                                             <div class="col-md-3">
                                                 <!-- Card -->
-                                                <div class="card promoting-card">
+                                                <div class="card promoting-card border">
 
                                                     <!-- Card image -->
                                                     <div class="view overlay border">
@@ -98,7 +98,7 @@
 
                                             <div class="col-md-3">
                                                 <!-- Card -->
-                                                <div class="card promoting-card">
+                                                <div class="card promoting-card border">
 
                                                     <!-- Card image -->
                                                     <div class="view overlay border">
