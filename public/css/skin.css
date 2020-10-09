@@ -116,7 +116,11 @@ a[data-toggle="collapse"] {
 }
 
 #infosys-display {
+<<<<<<< HEAD
     background: #001c33b8 !important;
+=======
+    background: #ffffffba !important;
+>>>>>>> helpdesk
 }
 
 ::-webkit-scrollbar-track {
