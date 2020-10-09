@@ -13,7 +13,7 @@
 							<img src="{{ url('images/icons/HelpDesk.png') }}">
                         </div>
 
-						<div id="infosys-display" class="card-body rounded white px-5">
+						<div id="infosys-display" class="card-body rounded white px-0">
 							<div class="row pl-5 pr-5">
 
                                 <!--Carousel Wrapper-->
