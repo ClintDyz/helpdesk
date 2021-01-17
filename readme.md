@@ -35,7 +35,7 @@
     
     example:
     ```
-    APP_NAME=PFTMS
+    APP_NAME=HELPDESK
     APP_DEBUG=false
     
     DB_HOST=127.0.0.1
