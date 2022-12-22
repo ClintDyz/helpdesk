@@ -63,3 +63,7 @@
     Username: admin
     Password: admin
     ```
+    
+          
+ 8. Copy storage folder to the corresponding storage folder in the system files:
+ 
